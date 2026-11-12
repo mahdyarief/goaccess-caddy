@@ -1,0 +1,12 @@
+:80 {
+	root * /srv/report
+	@ws path /ws*
+	handle @ws {
+		reverse_proxy 127.0.0.1:7890
+	}
+	handle {
+		header Cache-Control "no-cache"
+		rewrite * /report.html
+		file_server
+	}
+}

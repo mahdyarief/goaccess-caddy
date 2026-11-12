@@ -1,0 +1,7 @@
+# GoAccess reports
+/srv/report/*.html
+# Caddy
+/caddy-data
+/caddy-config
+# OS
+.DS_Store

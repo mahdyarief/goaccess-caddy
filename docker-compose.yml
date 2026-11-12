@@ -1,0 +1,19 @@
+services:
+  goaccess:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: goaccess-caddy:github
+    container_name: goaccess
+    restart: unless-stopped
+    volumes:
+      - /srv/goaccess/report:/srv/report
+      - /srv/goaccess/db:/srv/db
+      - /var/log/traefik:/srv/logs:ro
+      - /srv/goaccess/config:/srv/config:ro
+    networks:
+      - dokploy-network
+
+networks:
+  dokploy-network:
+    external: true
